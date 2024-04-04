@@ -1,0 +1,13 @@
+
+{%extends 'base.html'%}
+{%block content%}
+  <div class="container info-container">
+        <h1>The information of {{ veg.name }}</h1>
+        <div class="info-card">
+            <h2>Name: {{ veg.name }}</h2>
+            <h2>Quantity: {{ veg.quantity }}</h2>
+            <h2>Price: {{ veg.price }}</h2>
+        </div>
+    </div>
+    {%endblock%}
+

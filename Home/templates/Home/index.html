@@ -1,0 +1,104 @@
+{%extends 'base.html'%}
+{%block content%}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">PLTP</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Blogs</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Order</a></li>
+              <li><a class="dropdown-item" href="#">Track order</a></li>
+              <li><a class="dropdown-item" href="#">Feedback</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Contact us</a>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex">
+        <button class="btn btn-outline-success me-2" type="button">Signup</button>
+        <button class="btn btn-outline-primary" type="button">Login</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Purnalal Tarkari Pasal</h1>
+    <p class="lead">Fresh vegetables and fruits directly from our farm to your table.</p>
+  </div>
+
+  <div class="container veg-table">
+    <h2 class="mb-4">Vegetables</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-lg">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Quantity (K.G)</th>
+            <th>Price (Rs/K.G)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for veg in veg %}
+          <tr>
+            <td>{{ veg.id }}</td>
+            <td>{{ veg.name }}</td>
+            <td>{{ veg.quantity }}</td>
+            <td>{{ veg.price }}</td>
+            <td>
+            <td>
+              <a href="{% url 'update_veg' veg.id %}" class="btn btn-success btn-sm">Update</a>
+              <a href="{% url 'delete_veg' veg.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="mb-4">Fruits</h2>
+    <div class="row">
+      {% for fruit in fruits %}
+      <div class="col-md-4 mb-4">
+        <div class="card shadow">
+          <div class="card-body">
+            <h5 class="card-title">{{ fruit.name }}</h5>
+            <p class="card-text">Quantity: {{ fruit.quantity }} K.G</p>
+            <p class="card-text">Price: {{ fruit.price }} Rs/K.G</p>
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'Fruit_update' fruit.id %}" class="btn btn-primary btn-sm">Update</a>
+              <a href="{% url 'delete_fruit' fruit.id %}" class="btn btn-danger btn-sm">Delete</a>
+              
+            </div>
+        </div>
+      </div>
+    </div>
+      {% endfor %}
+    </div>
+  </div>
+  {%endblock%}
+  

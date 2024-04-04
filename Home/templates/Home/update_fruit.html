@@ -1,0 +1,12 @@
+
+{%extends 'base.html'%}
+{%block content%}
+<div class="center-form">
+  <form class="medium-width" method="POST">
+    <h1>Update Fruit</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+</div>
+{%endblock%}
